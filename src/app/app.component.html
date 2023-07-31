@@ -1,0 +1,25 @@
+<h1>Issue with custom form field controls using the o3rComponent decorator</h1>
+
+<form class="passport-info-form" [formGroup]="passportInfoForm">
+  <fieldset *ngIf="passportInfoForm.controls['expiryDate'] as expiryDateFormControl" aria-describedby="expiry-date-label expiry-date-hint expiry-date-error">
+    <mat-form-field class="expiry-date-wrapper">
+      <mat-label class="expiry-date-label" aria-hidden="true" class="expiry-date-label" id="expiry-date-label">
+        <span [innerText]="'Expiry Date'"></span>
+      </mat-label>
+      <double-input-form
+        [required]="true"
+        formControlName="expiryDate"
+        [placeholders]="{first: 'Month', last: 'Year'}"
+      >
+      </double-input-form>
+      <mat-hint>
+        <span id="expiry-date-hint" class="input-hint input-hint-expiry-date" [innerHTML]="'mm/yy'"></span>
+      </mat-hint>
+      <mat-error id="expiry-date-error" class="expiry-date-error">
+        <ng-container *ngIf="expiryDateFormControl.errors as errors">
+          <span class="expiry-date-error-required" *ngIf="errors['required']" [innerHTML]="'Please enter expiry date'" id="date-required"></span>
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+  </fieldset>
+</form>

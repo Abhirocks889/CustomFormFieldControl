@@ -1,0 +1,16 @@
+<div [formGroup]="parts" class="parts">
+  <input
+    type="text"
+    class="first"
+    [id]="id"
+    [placeholder]="(placeholders && placeholders.first) ? placeholders.first : ''"
+    formControlName="first"
+    [attr.maxlength]="firstMaxLength"
+    #first>
+  <input
+    type="text"
+    class="last"
+    [placeholder]="(placeholders && placeholders.last) ? placeholders.last : ''"
+    formControlName="last"
+    [attr.maxlength]="lastMaxLength">
+</div>
